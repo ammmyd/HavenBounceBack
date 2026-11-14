@@ -1,5 +1,6 @@
-[gd_scene format=3 uid="uid://b2veklr3t3qse"]
+[gd_scene format=4 uid="uid://b2veklr3t3qse"]
 
+[ext_resource type="Script" uid="uid://qpdoa3hwlrnb" path="res://scripts/character-Mvmt.gd" id="1_1pe0h"]
 [ext_resource type="Texture2D" uid="uid://bcy43ifp12sxs" path="res://textures/slime/dead/GameJam_ (5).png" id="1_5rr72"]
 [ext_resource type="Texture2D" uid="uid://c68ig83re3tqh" path="res://textures/slime/dead/GameJam_ (6).png" id="2_gyffv"]
 [ext_resource type="Texture2D" uid="uid://bmu28khq0uhvc" path="res://textures/slime/dead/GameJam_ (7).png" id="3_1pe0h"]
@@ -9,9 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://bo1376wu7l36x" path="res://textures/slime/eating/eating 5.png" id="7_ubhxj"]
 [ext_resource type="Texture2D" uid="uid://bla0shdocl4lu" path="res://textures/slime/eating/eating6.png" id="8_65or1"]
 [ext_resource type="Texture2D" uid="uid://btwabhprqudw3" path="res://textures/slime/eating/eating 2.png" id="9_lhbbi"]
+[ext_resource type="Texture2D" uid="uid://dfwam3ojrgcc6" path="res://textures/level/wallTemp.png" id="10_gyffv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mvuvj"]
-size = Vector2(20, 15)
+size = Vector2(47, 38)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lthvp"]
 animations = [{
@@ -68,30 +70,49 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_27bay"]
+texture = ExtResource("10_gyffv")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_uyspu"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_27bay")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1pe0h"]
+texture = ExtResource("10_gyffv")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
 [sub_resource type="TileSet" id="TileSet_mvuvj"]
 tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_1pe0h")
 
 [node name="Level1" type="Node2D" unique_id=1644244573]
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1700305279]
-
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1388568317]
+script = ExtResource("1_1pe0h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=860742298]
+position = Vector2(-5.5, 17)
 shape = SubResource("RectangleShape2D_mvuvj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=505640158]
 texture_filter = 1
+position = Vector2(-7.0000076, 16.999996)
+scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_lthvp")
 animation = &"slimeDead"
 
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=1700305279]
+
 [node name="Foreground" type="TileMapLayer" parent="." unique_id=1945822187]
-visible = false
+tile_map_data = PackedByteArray("AAD8/wEAAAAAAAAAAAD9/wEAAAAAAAAAAAD+/wEAAAAAAAAAAAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAAEAAAAAAAAAAAAAAAEAP//AAAAAAAAAAAEAP7/AAAAAAAAAAAEAP3/AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_uyspu")
 
 [node name="Background" type="TileMapLayer" parent="." unique_id=350361396]
+visible = false
 tile_set = SubResource("TileSet_mvuvj")
