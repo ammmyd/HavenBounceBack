@@ -7,6 +7,7 @@ var won := false
 @onready var launchSound := $LaunchSound
 @onready var stickSound := $StickSound
 @onready var deathSound := $DeathSound
+@onready var victorySound := $VictorySound
 
 @export var floorFrict := 800.0
 @export var minLaunPwr := 500.0
@@ -107,6 +108,7 @@ func win() -> void:
 	velocity = Vector2.ZERO
 	aimLine.clear_points()
 	sprite.play("slimeEating")
+	victorySound.play()
 
 	await sprite.animation_finished
 	if next_level:

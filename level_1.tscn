@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://qpdoa3hwlrnb" path="res://scripts/character.gd" id="1_1pe0h"]
 [ext_resource type="Texture2D" uid="uid://ct2cj03mxpo5t" path="res://textures/level/doorClosed.png" id="1_4p6gt"]
 [ext_resource type="Texture2D" uid="uid://bcy43ifp12sxs" path="res://textures/slime/dead/GameJam_ (5).png" id="1_5rr72"]
+[ext_resource type="Texture2D" uid="uid://b8gsgrjgutbyt" path="res://textures/background normal.png" id="1_hlf5m"]
 [ext_resource type="AudioStream" uid="uid://cmtmg0lsehjmg" path="res://audio/slime/Slime_attack1.ogg" id="2_27bay"]
 [ext_resource type="Texture2D" uid="uid://c68ig83re3tqh" path="res://textures/slime/dead/GameJam_ (6).png" id="2_gyffv"]
 [ext_resource type="Texture2D" uid="uid://dr66vasxqdqqu" path="res://textures/level/doorOpen.png" id="2_td8cy"]
@@ -17,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://bo1376wu7l36x" path="res://textures/slime/eating/eating 5.png" id="7_ubhxj"]
 [ext_resource type="Texture2D" uid="uid://bla0shdocl4lu" path="res://textures/slime/eating/eating6.png" id="8_65or1"]
 [ext_resource type="Texture2D" uid="uid://btwabhprqudw3" path="res://textures/slime/eating/eating 2.png" id="9_lhbbi"]
+[ext_resource type="AudioStream" uid="uid://skqnfykwoorj" path="res://audio/victoryyyyyyyy.ogg" id="9_qbpgg"]
 [ext_resource type="Texture2D" uid="uid://dmmx2l43nfqa" path="res://textures/aimLine.png" id="13_ggavl"]
 [ext_resource type="Texture2D" uid="uid://burrd2udywy03" path="res://textures/slime/idle.png" id="13_hycyb"]
 [ext_resource type="Texture2D" uid="uid://ba3mfruj0qabg" path="res://textures/slime/idle2.png" id="14_swvua"]
@@ -112,7 +114,7 @@ animations = [{
 }],
 "loop": 0,
 "name": &"slimeEating",
-"speed": 10.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -281,6 +283,14 @@ tile_proxies/coords_level = [[14, Vector2i(0, 0)], [18, Vector2i(0, 0)], [15, Ve
 
 [node name="Level1" type="Node2D" unique_id=1644244573]
 
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1862037561]
+scroll_scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=1490737490]
+position = Vector2(726, -169.00003)
+scale = Vector2(5.8858643, 5.8607183)
+texture = ExtResource("1_hlf5m")
+
 [node name="Doors" type="TileMapLayer" parent="." unique_id=1263319868]
 scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAAxAPb/AAAAAAAAABAxAPf/AAAAAAEAABA=")
@@ -314,6 +324,9 @@ stream = ExtResource("3_sof0w")
 
 [node name="DeathSound" type="AudioStreamPlayer2D" parent="CharacterBody2D" unique_id=642112810]
 stream = ExtResource("6_td8cy")
+
+[node name="VictorySound" type="AudioStreamPlayer2D" parent="CharacterBody2D" unique_id=1610101392]
+stream = ExtResource("9_qbpgg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=860742298]
 position = Vector2(-4.5, 15.5)

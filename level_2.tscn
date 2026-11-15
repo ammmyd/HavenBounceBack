@@ -1,16 +1,19 @@
 [gd_scene format=4 uid="uid://cpa2dwvo726ek"]
 
 [ext_resource type="Texture2D" uid="uid://ct2cj03mxpo5t" path="res://textures/level/doorClosed.png" id="1_qh630"]
+[ext_resource type="Texture2D" uid="uid://b8gsgrjgutbyt" path="res://textures/background normal.png" id="1_qm6bn"]
 [ext_resource type="Texture2D" uid="uid://dr66vasxqdqqu" path="res://textures/level/doorOpen.png" id="2_uv8er"]
 [ext_resource type="AudioStream" uid="uid://cmtmg0lsehjmg" path="res://audio/slime/Slime_attack1.ogg" id="4_eqpf5"]
 [ext_resource type="Texture2D" uid="uid://b7ranr4i1ljkp" path="res://textures/level/slime piececheckpoint.png" id="4_xwl8u"]
 [ext_resource type="AudioStream" uid="uid://dfgnm4in1ue2v" path="res://audio/slime/Slime_attack2.ogg" id="5_qm6bn"]
 [ext_resource type="Script" uid="uid://dsbjdv16e486w" path="res://scripts/character2.gd" id="5_uv8er"]
+[ext_resource type="PackedScene" uid="uid://b73i0ciyw6vru" path="res://level_3.tscn" id="6_653n8"]
 [ext_resource type="AudioStream" uid="uid://bgeitxlw64bx8" path="res://audio/slime/RIMURU DEATH.wav" id="6_cugil"]
 [ext_resource type="Texture2D" uid="uid://bcy43ifp12sxs" path="res://textures/slime/dead/GameJam_ (5).png" id="7_gx3pu"]
 [ext_resource type="Texture2D" uid="uid://c68ig83re3tqh" path="res://textures/slime/dead/GameJam_ (6).png" id="8_wleuh"]
 [ext_resource type="Texture2D" uid="uid://bmu28khq0uhvc" path="res://textures/slime/dead/GameJam_ (7).png" id="9_2lakv"]
 [ext_resource type="Texture2D" uid="uid://duqragip4mau5" path="res://textures/slime/dead/GameJam_ (4).png" id="10_46val"]
+[ext_resource type="AudioStream" uid="uid://skqnfykwoorj" path="res://audio/victoryyyyyyyy.ogg" id="10_eqpf5"]
 [ext_resource type="Texture2D" uid="uid://dy5bx0gjmdusu" path="res://textures/slime/eating/eating 3.png" id="11_prm7a"]
 [ext_resource type="Texture2D" uid="uid://6p74k4rx3fkt" path="res://textures/slime/eating/eating4png.png" id="12_0uosw"]
 [ext_resource type="Texture2D" uid="uid://bo1376wu7l36x" path="res://textures/slime/eating/eating 5.png" id="13_cgfqg"]
@@ -126,7 +129,7 @@ animations = [{
 }],
 "loop": 0,
 "name": &"slimeEating",
-"speed": 10.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -283,6 +286,14 @@ tile_proxies/coords_level = [[14, Vector2i(0, 0)], [18, Vector2i(0, 0)], [15, Ve
 
 [node name="Level2" type="Node2D" unique_id=1644244573]
 
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=720182218]
+scroll_scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=1579310040]
+position = Vector2(795.00006, -374)
+scale = Vector2(6.52887, 6.500977)
+texture = ExtResource("1_qm6bn")
+
 [node name="Doors" type="TileMapLayer" parent="." unique_id=1263319868 groups=["nextLevelTrigger"]]
 scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAAxAOz/AAAAAAAAABAxAO3/AAAAAAEAABANAPT/AAABAAAAAAAOAPT/AAACAAAAAAA=")
@@ -308,6 +319,7 @@ texture = ExtResource("4_xwl8u")
 collision_layer = 255
 collision_mask = 255
 script = ExtResource("5_uv8er")
+next_level = ExtResource("6_653n8")
 minLaunPwr = 200.0
 maxLaunPwr = 700.0
 
@@ -319,6 +331,9 @@ stream = ExtResource("5_qm6bn")
 
 [node name="DeathSound" type="AudioStreamPlayer2D" parent="CharacterBody2D" unique_id=894024741]
 stream = ExtResource("6_cugil")
+
+[node name="VictorySound" type="AudioStreamPlayer2D" parent="CharacterBody2D" unique_id=1022254718]
+stream = ExtResource("10_eqpf5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=321382703]
 position = Vector2(-4.5, 15.5)
@@ -371,3 +386,32 @@ tile_set = SubResource("TileSet_mvuvj")
 position = Vector2(12, 0)
 tile_map_data = PackedByteArray("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")
 tile_set = SubResource("TileSet_mvuvj")
+
+[node name="Label" type="Label" parent="." unique_id=1372965353]
+offset_left = -30.0
+offset_top = -119.0
+offset_right = 320.0
+offset_bottom = -70.0
+text = "Space to jump.
+You can jump and then shoot."
+
+[node name="Label2" type="Label" parent="." unique_id=1043249837]
+offset_left = 342.0
+offset_top = -57.0
+offset_right = 480.0
+offset_bottom = -34.0
+text = "That looks... tight."
+
+[node name="Label3" type="Label" parent="." unique_id=1548187893]
+offset_left = 493.0
+offset_top = -306.0
+offset_right = 748.0
+offset_bottom = -283.0
+text = "Do your best to jump AND shoot."
+
+[node name="Label4" type="Label" parent="." unique_id=166213350]
+offset_left = 1178.0
+offset_top = -603.0
+offset_right = 1244.0
+offset_bottom = -580.0
+text = "Spike -->"
