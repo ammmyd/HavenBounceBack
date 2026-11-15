@@ -1,9 +1,12 @@
 extends CharacterBody2D
+@export var next_level: PackedScene
+var won := false
 @onready var sprite := $AnimatedSprite2D
 @onready var aimLine := $AimLine
 @export var aimSteps := 60
 @onready var launchSound := $LaunchSound
 @onready var stickSound := $StickSound
+@onready var deathSound := $DeathSound
 
 @export var floorFrict := 800.0
 @export var minLaunPwr := 500.0
@@ -11,7 +14,10 @@ extends CharacterBody2D
 @export var chargeTime := 1.0
 @export var bounceTimes := 0
 @export var maxBounces := 1
-@export var bounceKeep := 0.6
+@export var bounceKeep := 1
+
+@export var jumpPower := 600.0
+var airLaunchReady := false
 
 var charge := 0.0
 var charging := false
@@ -21,20 +27,24 @@ var dead := false
 var direction
 
 func _physics_process(delta: float) -> void:
-	if dead:
+	if dead or won:
 		return
 	if not stuck and not is_on_floor():
 		velocity += get_gravity() * delta
 
 	if is_on_floor():
 		velocity.x = move_toward(velocity.x, 0.0, floorFrict * delta)
+		airLaunchReady = false
+		#if Input.is_action_just_pressed("jump") and not charging and not stuck:
+		#	velocity.y = -jumpPower
+		#	airLaunchReady = true
 
-	if Input.is_action_just_pressed("launch") and (stuck or is_on_floor()):
+	if Input.is_action_just_pressed("launch") and (stuck or is_on_floor() or airLaunchReady):
 		charging = true
 		charge = 0.0
 
 	if charging:
-		if not (stuck or is_on_floor()):
+		if not (stuck or is_on_floor() or airLaunchReady):
 			charging = false
 		charge = minf(charge + delta / chargeTime, 1.0)
 
@@ -44,23 +54,34 @@ func _physics_process(delta: float) -> void:
 			stuck = false
 			bounceTimes = 0
 			charging = false
+			airLaunchReady = false
 			launchSound.pitch_scale = randf_range(0.9, 1.1)
 			launchSound.play()
+		
 
 	if not stuck:
 		var impact_velocity := velocity
 		move_and_slide()
+
+		for i in get_slide_collision_count():
+			var collider := get_slide_collision(i).get_collider() as Node
+			if collider and collider.is_in_group("hazard"):
+				die()
+				return
+			if collider and collider.is_in_group("nextLevelTrigger"):
+				win()
+				return
+
 		if is_on_wall() or is_on_ceiling():
 			if bounceTimes < maxBounces:
 				bounceTimes += 1
 				var normal := get_last_slide_collision().get_normal()
 				velocity = impact_velocity.bounce(normal) * bounceKeep
-			else:
-				stuck = true
-				velocity = Vector2.ZERO
-				stickSound.play()
+			#else:
+			#	stuck = true
+			#	velocity = Vector2.ZERO
+			#	stickSound.play()
 			
-	update_aim()
 	update_aim()
 	update_animation()
 	print("Current velocity: ", velocity)
@@ -74,10 +95,24 @@ func die() -> void:
 	aimLine.clear_points()
 	$CollisionShape2D.set_deferred("disabled", true)
 	sprite.play("slimeDead")
+	deathSound.play()
 
 	await get_tree().create_timer(0.6).timeout
 	get_tree().reload_current_scene()
-			
+func win() -> void:
+	if won or dead:
+		return
+	won = true
+	charging = false
+	velocity = Vector2.ZERO
+	aimLine.clear_points()
+	sprite.play("slimeEating")
+
+	await sprite.animation_finished
+	if next_level:
+		get_tree().change_scene_to_packed(next_level)
+	else:
+		print("No next level set")
 
 func play_anim(anim: StringName) -> void:
 	if sprite.animation != anim:

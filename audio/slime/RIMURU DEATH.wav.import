@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bgeitxlw64bx8"
+path="res://.godot/imported/RIMURU DEATH.wav-965de9fa418adc817c89d0607bcb9858.sample"
+
+[deps]
+
+source_file="res://audio/slime/RIMURU DEATH.wav"
+dest_files=["res://.godot/imported/RIMURU DEATH.wav-965de9fa418adc817c89d0607bcb9858.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

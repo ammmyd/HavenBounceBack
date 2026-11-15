@@ -1,14 +1,19 @@
 [gd_scene format=4 uid="uid://b2veklr3t3qse"]
 
 [ext_resource type="Script" uid="uid://qpdoa3hwlrnb" path="res://scripts/character.gd" id="1_1pe0h"]
+[ext_resource type="Texture2D" uid="uid://ct2cj03mxpo5t" path="res://textures/level/doorClosed.png" id="1_4p6gt"]
 [ext_resource type="Texture2D" uid="uid://bcy43ifp12sxs" path="res://textures/slime/dead/GameJam_ (5).png" id="1_5rr72"]
 [ext_resource type="AudioStream" uid="uid://cmtmg0lsehjmg" path="res://audio/slime/Slime_attack1.ogg" id="2_27bay"]
 [ext_resource type="Texture2D" uid="uid://c68ig83re3tqh" path="res://textures/slime/dead/GameJam_ (6).png" id="2_gyffv"]
+[ext_resource type="Texture2D" uid="uid://dr66vasxqdqqu" path="res://textures/level/doorOpen.png" id="2_td8cy"]
 [ext_resource type="Texture2D" uid="uid://bmu28khq0uhvc" path="res://textures/slime/dead/GameJam_ (7).png" id="3_1pe0h"]
+[ext_resource type="Texture2D" uid="uid://b7ranr4i1ljkp" path="res://textures/level/slime piececheckpoint.png" id="3_3i87y"]
 [ext_resource type="AudioStream" uid="uid://dfgnm4in1ue2v" path="res://audio/slime/Slime_attack2.ogg" id="3_sof0w"]
 [ext_resource type="Texture2D" uid="uid://duqragip4mau5" path="res://textures/slime/dead/GameJam_ (4).png" id="4_27bay"]
+[ext_resource type="PackedScene" uid="uid://cpa2dwvo726ek" path="res://level_2.tscn" id="4_mmag5"]
 [ext_resource type="Texture2D" uid="uid://dy5bx0gjmdusu" path="res://textures/slime/eating/eating 3.png" id="5_sof0w"]
 [ext_resource type="Texture2D" uid="uid://6p74k4rx3fkt" path="res://textures/slime/eating/eating4png.png" id="6_ggavl"]
+[ext_resource type="AudioStream" uid="uid://bgeitxlw64bx8" path="res://audio/slime/RIMURU DEATH.wav" id="6_td8cy"]
 [ext_resource type="Texture2D" uid="uid://bo1376wu7l36x" path="res://textures/slime/eating/eating 5.png" id="7_ubhxj"]
 [ext_resource type="Texture2D" uid="uid://bla0shdocl4lu" path="res://textures/slime/eating/eating6.png" id="8_65or1"]
 [ext_resource type="Texture2D" uid="uid://btwabhprqudw3" path="res://textures/slime/eating/eating 2.png" id="9_lhbbi"]
@@ -33,6 +38,34 @@
 [ext_resource type="Texture2D" uid="uid://kq3ryhl4av0h" path="res://textures/level/spikes.png" id="30_notaq"]
 [ext_resource type="Texture2D" uid="uid://diunapaqd8jsc" path="res://textures/level/ceiling.png" id="31_notaq"]
 [ext_resource type="Texture2D" uid="uid://r2xwu7hluvel" path="res://textures/level/wallNew.png" id="32_ett8d"]
+[ext_resource type="Script" uid="uid://dahnrw4pwtbfq" path="res://enemy_1.gd" id="33_hu5wk"]
+[ext_resource type="Texture2D" uid="uid://dnvwqimsbno40" path="res://textures/enemy/enemies.png" id="33_qa26o"]
+[ext_resource type="Texture2D" uid="uid://0aasjar4inuu" path="res://textures/enemy/enemies2.png" id="34_hu5wk"]
+[ext_resource type="Texture2D" uid="uid://k8gfq0ew8tdo" path="res://textures/enemy/enemies3.png" id="35_mmag5"]
+[ext_resource type="Texture2D" uid="uid://c01gglru3jfj4" path="res://textures/enemy/enemies4.png" id="36_3i87y"]
+[ext_resource type="Texture2D" uid="uid://bfxv43k31on00" path="res://textures/enemy/enemies5.png" id="37_qbpgg"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i5xja"]
+texture = ExtResource("1_4p6gt")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -3.369254, -8, -3.4683504, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -3.369254, -8, -3.4683504, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mdra8"]
+texture = ExtResource("2_td8cy")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_lthvp"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_i5xja")
+sources/1 = SubResource("TileSetAtlasSource_mdra8")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uyspu"]
+size = Vector2(22, 27)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mvuvj"]
 size = Vector2(45, 33)
@@ -150,6 +183,29 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_mvuvj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("33_qa26o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_hu5wk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_mmag5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_3i87y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_qbpgg")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ett8d"]
 texture = ExtResource("30_notaq")
 0:0/0 = 0
@@ -208,26 +264,56 @@ texture_region_size = Vector2i(32, 32)
 0:5/0 = 0
 0:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hu5wk"]
+texture = ExtResource("2_td8cy")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 2.488037, -16, 1.5550232, 16, -16, 16)
+
 [sub_resource type="TileSet" id="TileSet_mvuvj"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_4p6gt")
 sources/1 = SubResource("TileSetAtlasSource_td8cy")
 sources/2 = SubResource("TileSetAtlasSource_84ct4")
+sources/22 = SubResource("TileSetAtlasSource_hu5wk")
 tile_proxies/coords_level = [[14, Vector2i(0, 0)], [18, Vector2i(0, 0)], [15, Vector2i(0, 0)], [18, Vector2i(1, 0)], [16, Vector2i(0, 0)], [18, Vector2i(2, 0)], [17, Vector2i(0, 0)], [18, Vector2i(3, 0)]]
 
 [node name="Level1" type="Node2D" unique_id=1644244573]
+
+[node name="Doors" type="TileMapLayer" parent="." unique_id=1263319868]
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAAxAPb/AAAAAAAAABAxAPf/AAAAAAEAABA=")
+tile_set = SubResource("TileSet_lthvp")
+
+[node name="Checkpoint" type="CharacterBody2D" parent="." unique_id=747596430 groups=["nextLevelTrigger"]]
+position = Vector2(1503, -265)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoint" unique_id=323433148]
+position = Vector2(-1, -7)
+shape = SubResource("RectangleShape2D_uyspu")
+
+[node name="Sprite2D" type="Sprite2D" parent="Checkpoint" unique_id=328005084]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("3_3i87y")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1388568317]
 collision_layer = 255
 collision_mask = 255
 script = ExtResource("1_1pe0h")
+next_level = ExtResource("4_mmag5")
+minLaunPwr = 200.0
+maxLaunPwr = 700.0
 
 [node name="LaunchSound" type="AudioStreamPlayer2D" parent="CharacterBody2D" unique_id=370981892]
 stream = ExtResource("2_27bay")
 
 [node name="StickSound" type="AudioStreamPlayer2D" parent="CharacterBody2D" unique_id=796961249]
 stream = ExtResource("3_sof0w")
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="CharacterBody2D" unique_id=642112810]
+stream = ExtResource("6_td8cy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=860742298]
 position = Vector2(-4.5, 15.5)
@@ -248,10 +334,65 @@ texture_repeat = 2
 texture = ExtResource("13_ggavl")
 texture_mode = 1
 
-[node name="Spike" type="TileMapLayer" parent="." unique_id=335007599]
+[node name="Enemy1" type="CharacterBody2D" parent="." unique_id=1368681745 groups=["hazard"]]
+position = Vector2(602, -13)
+script = ExtResource("33_hu5wk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy1" unique_id=1809121269]
+shape = SubResource("RectangleShape2D_uyspu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemy1" unique_id=200010301]
+texture_filter = 1
+scale = Vector2(2.21875, 2.21875)
+sprite_frames = SubResource("SpriteFrames_mvuvj")
+frame_progress = 0.7554807
+
+[node name="Enemy2" type="CharacterBody2D" parent="." unique_id=1822739219 groups=["hazard"]]
+position = Vector2(1023, -42)
+script = ExtResource("33_hu5wk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy2" unique_id=516877474]
+shape = SubResource("RectangleShape2D_uyspu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemy2" unique_id=791131365]
+texture_filter = 1
+scale = Vector2(2.21875, 2.21875)
+sprite_frames = SubResource("SpriteFrames_mvuvj")
+
+[node name="Spike" type="TileMapLayer" parent="." unique_id=335007599 groups=["hazard"]]
 tile_map_data = PackedByteArray("AAAKAAAAAQAAAAAAAAAKAAEAAQAAAAEAAAALAAAAAQABAAAAAAALAAEAAQABAAEAAAAMAAAAAQAAAAAAAAAMAAEAAQAAAAEAAAANAAAAAQABAAAAAAANAAEAAQABAAEAAAAOAAAAAQAAAAAAAAAOAAEAAQAAAAEAAAAPAAAAAQABAAAAAAAPAAEAAQABAAEAAAAQAAAAAQAAAAAAAAAQAAEAAQAAAAEAAAARAAAAAQABAAAAAAARAAEAAQABAAEAAAASAAAAAQAAAAAAAAASAAEAAQAAAAEAAAATAAAAAQABAAAAAAATAAEAAQABAAEAAAAUAAAAAQAAAAAAAAAUAAEAAQAAAAEAAAAVAAAAAQABAAAAAAAVAAEAAQABAAEAAAAWAAAAAQAAAAAAAAAWAAEAAQAAAAEAAAAXAAAAAQABAAAAAAAXAAEAAQABAAEAAAAYAAAAAQAAAAAAAAAYAAEAAQAAAAEAAAAZAAAAAQABAAAAAAAZAAEAAQABAAEAAAAaAAAAAQAAAAAAAAAaAAEAAQAAAAEAAAAbAAAAAQABAAAAAAAbAAEAAQABAAEAAAAcAAAAAQAAAAAAAAAcAAEAAQAAAAEAAAAdAAAAAQABAAAAAAAdAAEAAQABAAEAAAAeAAAAAQAAAAAAAAAeAAEAAQAAAAEAAAAfAAAAAQABAAAAAAAfAAEAAQABAAEAAAAgAAAAAQAAAAAAAAAgAAEAAQAAAAEAAAAhAAAAAQABAAAAAAAhAAEAAQABAAEAAAA=")
 tile_set = SubResource("TileSet_hycyb")
 
 [node name="Obstacle" type="TileMapLayer" parent="." unique_id=350361396]
-tile_map_data = PackedByteArray("AAD9/wEAAAAAAAAAAAD+/wEAAAABAAAAAAD//wEAAAACAAAAAAAAAAEAAAADAAAAAAABAAEAAAAAAAAAAAACAAEAAAABAAAAAAADAAEAAAACAAAAAAAEAAEAAAADAAAAAAAFAAEAAAAAAAAAAAAGAAEAAAABAAAAAAAHAAEAAAACAAAAAAAIAAEAAAADAAAAAAAJAAEAAAAAAAAAAAAKAAEAAAABAAAAAAALAAEAAAACAAAAAAAMAAEAAAADAAAAAAANAAEAAAAAAAAAAAAOAAEAAAABAAAAAAAPAAEAAAACAAAAAAAQAAEAAAADAAAAAAARAAEAAAAAAAAAAAASAAEAAAABAAAAAAATAAEAAAACAAAAAAAUAAEAAAADAAAAAAAVAAEAAAAAAAAAAAAWAAEAAAABAAAAAAAXAAEAAAACAAAAAAAYAAEAAAADAAAAAAAZAAEAAAAAAAAAAAAaAAEAAAABAAAAAAAbAAEAAAACAAAAAAAcAAEAAAADAAAAAAAEAPv/AgAAAAEAAAAEAPz/AgAAAAEAAAAEAP3/AgAAAAIAAAAEAP7/AgAAAAMAAAAEAP//AgAAAAQAAAAEAAAAAgAAAAUAAAD8//z/AgAAAAEAAAD8//3/AgAAAAIAAAD8//7/AgAAAAMAAAD8////AgAAAAQAAAD8/wAAAgAAAAUAAAD8//f/AgAAAAQAAAD8//j/AgAAAAUAAAD8//n/AgAAAAMAAAD8//r/AgAAAAQAAAD8//v/AgAAAAUAAAD8//T/AQAAAAAAAAD8//X/AgAAAAIAAAD8//b/AgAAAAMAAAD9//T/AQABAAAAAAD+//T/AQACAAAAAAD///T/AQADAAAAAAAAAPT/AQAAAAAAAAABAPT/AQABAAAAAAACAPT/AQACAAAAAAADAPT/AQADAAAAAAAEAPT/AQAAAAAAAAAFAPT/AQABAAAAAAAGAPT/AQACAAAAAAAHAPT/AQADAAAAAAAIAPT/AQAAAAAAAAAJAPT/AQABAAAAAAAKAPT/AQACAAAAAAALAPT/AQADAAAAAAAMAPT/AQAAAAAAAAANAPT/AQABAAAAAAAOAPT/AQACAAAAAAAPAPT/AQADAAAAAAAQAPT/AQAAAAAAAAARAPT/AQABAAAAAAASAPT/AQACAAAAAAATAPT/AQADAAAAAAD9//z/AQAAAAAAAAD+//z/AQABAAAAAAD///z/AQACAAAAAAAAAPz/AQADAAAAAAAEAPr/AgAAAAAAAAD8/wEAAAABAAAAAAARAPr/AgAAAAAAAAARAPv/AgAAAAEAAAARAPz/AgAAAAIAAAARAP3/AgAAAAMAAAARAP7/AgAAAAQAAAARAP//AgAAAAUAAAARAAAAAgAAAAUAAAAOAPr/AAADAAAAAAANAPr/AAACAAAAAAAHAPr/AAABAAAAAAAIAPr/AAACAAAAAAA=")
+tile_map_data = PackedByteArray("AAD9/wEAAAAAAAAAAAD+/wEAAAABAAAAAAD//wEAAAACAAAAAAAAAAEAAAADAAAAAAABAAEAAAAAAAAAAAACAAEAAAABAAAAAAADAAEAAAACAAAAAAAEAAEAAAADAAAAAAAFAAEAAAAAAAAAAAAGAAEAAAABAAAAAAAHAAEAAAACAAAAAAAIAAEAAAADAAAAAAAJAAEAAAAAAAAAAAAKAAEAAAABAAAAAAALAAEAAAACAAAAAAAMAAEAAAADAAAAAAANAAEAAAAAAAAAAAAOAAEAAAABAAAAAAAPAAEAAAACAAAAAAAQAAEAAAADAAAAAAARAAEAAAAAAAAAAAAEAPv/AgAAAAEAAAAEAPz/AgAAAAEAAAAEAP3/AgAAAAIAAAAEAP7/AgAAAAMAAAAEAP//AgAAAAQAAAAEAAAAAgAAAAUAAAD8//z/AgAAAAEAAAD8//3/AgAAAAIAAAD8//7/AgAAAAMAAAD8////AgAAAAQAAAD8/wAAAgAAAAUAAAD8//f/AgAAAAQAAAD8//j/AgAAAAUAAAD8//n/AgAAAAMAAAD8//r/AgAAAAQAAAD8//v/AgAAAAUAAAD8//T/AQAAAAAAAAD8//X/AgAAAAIAAAD8//b/AgAAAAMAAAD9//T/AQABAAAAAAD+//T/AQACAAAAAAD///T/AQADAAAAAAAAAPT/AQAAAAAAAAABAPT/AQABAAAAAAACAPT/AQACAAAAAAADAPT/AQADAAAAAAAEAPT/AQAAAAAAAAAFAPT/AQABAAAAAAAGAPT/AQACAAAAAAAHAPT/AQADAAAAAAAIAPT/AQAAAAAAAAAJAPT/AQABAAAAAAAKAPT/AQACAAAAAAALAPT/AQADAAAAAAAMAPT/AQAAAAAAAAANAPT/AQABAAAAAAAOAPT/AQACAAAAAAAPAPT/AQADAAAAAAAQAPT/AQAAAAAAAAARAPT/AQABAAAAAAASAPT/AQACAAAAAAATAPT/AQADAAAAAAAEAPr/AgAAAAAAAAD8/wEAAAABAAAAAAARAPr/AgAAAAAAAAARAPv/AgAAAAEAAAARAPz/AgAAAAIAAAARAP3/AgAAAAMAAAARAP7/AgAAAAQAAAARAP//AgAAAAUAAAARAAAAAgAAAAUAAAAOAPr/AAADAAAAAAANAPr/AAACAAAAAAAHAPr/AAABAAAAAAAIAPr/AAACAAAAAAASAAAAAAAAAAAAAAATAAAAAAABAAAAAAAUAAAAAAACAAAAAAAVAAAAAAADAAAAAAAWAAAAAAAAAAAAAAAXAAAAAAABAAAAAAAYAAAAAAACAAAAAAAZAAAAAAADAAAAAAAaAAAAAAAAAAAAAAAbAAAAAAABAAAAAAAcAAAAAAACAAAAAAAdAAAAAgAAAAUAAAAdAPr/AgAAAAMAAAAdAPv/AgAAAAQAAAAdAPz/AgAAAAUAAAAdAP3/AgAAAAIAAAAdAP7/AgAAAAMAAAAdAP//AgAAAAQAAAAdAPf/AgAAAAAAAAAdAPj/AgAAAAEAAAAdAPn/AgAAAAIAAAAWAPX/AgAAAAUAADAWAPb/AgAAAAQAADAWAPf/AgAAAAUAADAWAPj/AgAAAAQAADAWAPn/AgAAAAMAADAWAPr/AgAAAAIAADAWAPv/AgAAAAEAADAWAPz/AAAAAAAAAAAXAPz/AAABAAAAAAAYAPz/AAACAAAAAAAbAPf/AAAAAAAAAAAcAPf/AAABAAAAAAAbAPr/AAAAAAAAAAAcAPr/AAABAAAAAAAUAPT/AQAAAAAAAAAVAPT/AQABAAAAAAAWAPT/AQACAAAAAAAXAPT/AQADAAAAAAAYAPT/AQAAAAAAAAAZAPT/AQABAAAAAAAaAPT/AQACAAAAAAAbAPT/AQADAAAAAAAcAPT/AQAAAAAAAAAdAPT/AQABAAAAAAAeAPT/AQACAAAAAAAfAPT/AQADAAAAAAAgAPT/AQAAAAAAAAAhAPT/AQABAAAAAAAiAPT/AQACAAAAAAAjAPT/AQADAAAAAAAkAPT/AQAAAAAAAAAlAPT/AQABAAAAAAAmAPT/AQACAAAAAAAnAPT/AQADAAAAAAAoAPT/AQAAAAAAAAApAPT/AQABAAAAAAAqAPT/AQACAAAAAAArAPT/AQADAAAAAAAsAPT/AQAAAAAAAAAtAPT/AQABAAAAAAAuAPT/AQAAAAAAAAAvAPT/AQABAAAAAAAwAPT/AQACAAAAAAAxAPT/AQADAAAAAAAuAPj/AAADAAAAAAAvAPj/AAABAAAAAAAwAPj/AAACAAAAAAAxAPj/AAADAAAAAAArAPj/AAAAAAAAAAAsAPj/AAABAAAAAAAtAPj/AAACAAAAAAArAPn/AgAAAAEAAAArAPr/AgAAAAIAAAArAPv/AgAAAAMAAAArAPz/AgAAAAQAAAArAP3/AgAAAAIAAAAyAPT/AgAAAAEAAAAyAPX/AgAAAAIAAAAyAPb/AgAAAAMAAAAyAPf/AgAAAAQAAAAyAPj/AgAAAAUAAAD9//3/AQAAAAAAAAD+//3/AQABAAAAAAD///3/AQACAAAAAAArAP7/AgAAAAMAAAArAP//AgAAAAQAAAArAAAAAgAAAAUAAAD9/wAAFgAAAAAAAAAeAAAAAAAAAAAAAAAfAAAAAAABAAAAAAAgAAAAAAACAAAAAAAhAAAAAAADAAAAAAAiAAAAAAAAAAAAAAAjAAAAAAABAAAAAAAkAAAAAAAAAAAAAAAlAAAAAAABAAAAAAAmAAAAAAACAAAAAAAnAAAAAAAAAAAAAAAoAAAAAAABAAAAAAApAAAAAAACAAAAAAAqAAAAAAADAAAAAAAeAPv/AgAAAAAAAAAeAP3/AgAAAAIAAAAeAP7/AgAAAAMAAAAeAP//AgAAAAQAAAAeAPz/AgAAAAQAAAAqAPj/AAADAAAAAAApAPj/AAACAAAAAAAoAPj/AAABAAAAAAAnAPj/AAAAAAAAAAAnAPf/AgAAAAAAAAA=")
 tile_set = SubResource("TileSet_mvuvj")
+
+[node name="Label" type="Label" parent="." unique_id=799980124]
+offset_left = -86.0
+offset_top = -160.0
+offset_right = 102.0
+offset_bottom = -111.0
+text = "Use mouse to aim.
+LMB to jump really high!"
+
+[node name="Label2" type="Label" parent="." unique_id=616230111]
+offset_left = 593.0
+offset_top = -80.0
+offset_right = 633.0
+offset_bottom = -57.0
+text = "Careful, we're in enemy territory..."
+
+[node name="Label3" type="Label" parent="." unique_id=1497366636]
+offset_left = 1100.0
+offset_top = -264.0
+offset_right = 1270.0
+offset_bottom = -215.0
+text = "Maybe you could
+use a ledge up there..."
+
+[node name="Label4" type="Label" parent="." unique_id=636525615]
+offset_left = 193.0
+offset_top = -40.0
+offset_right = 352.0
+offset_bottom = -17.0
+text = "Just... don't die here."
