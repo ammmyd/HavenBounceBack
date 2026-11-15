@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://c1was6ltca567" path="res://scripts/character3.gd" id="5_k7jig"]
 [ext_resource type="AudioStream" uid="uid://cmtmg0lsehjmg" path="res://audio/slime/Slime_attack1.ogg" id="6_apkyb"]
 [ext_resource type="AudioStream" uid="uid://dfgnm4in1ue2v" path="res://audio/slime/Slime_attack2.ogg" id="7_wp21n"]
+[ext_resource type="PackedScene" uid="uid://bv5nxfa6cmcqb" path="res://level_4.tscn" id="7_xsiod"]
 [ext_resource type="AudioStream" uid="uid://bgeitxlw64bx8" path="res://audio/slime/RIMURU DEATH.wav" id="8_bx5y4"]
 [ext_resource type="AudioStream" uid="uid://skqnfykwoorj" path="res://audio/victoryyyyyyyy.ogg" id="9_cwnlo"]
 [ext_resource type="Texture2D" uid="uid://bcy43ifp12sxs" path="res://textures/slime/dead/GameJam_ (5).png" id="9_dff1k"]
@@ -45,6 +46,7 @@
 [ext_resource type="Texture2D" uid="uid://diunapaqd8jsc" path="res://textures/level/ceiling.png" id="42_x3xpt"]
 [ext_resource type="Texture2D" uid="uid://r2xwu7hluvel" path="res://textures/level/wallNew.png" id="43_stb3r"]
 [ext_resource type="Texture2D" uid="uid://cuyo0jshfqw8p" path="res://textures/background slimed.png" id="45_om02f"]
+[ext_resource type="AudioStream" uid="uid://kuigbi4j7rwf" path="res://audio/music/bgm.ogg" id="47_e0wxr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i5xja"]
 texture = ExtResource("1_k7jig")
@@ -298,7 +300,7 @@ texture = ExtResource("45_om02f")
 
 [node name="Doors" type="TileMapLayer" parent="." unique_id=1263319868 groups=["nextLevelTrigger"]]
 scale = Vector2(2, 2)
-tile_map_data = PackedByteArray("AAAxAOz/AAAAAAAAABAxAO3/AAAAAAEAABApAPn/AAAAAAAAABApAPr/AAAAAAEAABA=")
+tile_map_data = PackedByteArray("AAApAPn/AAAAAAAAABApAPr/AAAAAAEAABA=")
 tile_set = SubResource("TileSet_lthvp")
 
 [node name="Spike" type="TileMapLayer" parent="." unique_id=335007599 groups=["hazard"]]
@@ -321,6 +323,7 @@ texture = ExtResource("4_xsiod")
 collision_layer = 255
 collision_mask = 255
 script = ExtResource("5_k7jig")
+next_level = ExtResource("7_xsiod")
 minLaunPwr = 200.0
 maxLaunPwr = 700.0
 
@@ -412,3 +415,7 @@ offset_top = 264.0
 offset_right = 945.0
 offset_bottom = 287.0
 text = "<- smaller spike"
+
+[node name="BGM" type="AudioStreamPlayer2D" parent="." unique_id=488283619]
+stream = ExtResource("47_e0wxr")
+autoplay = true

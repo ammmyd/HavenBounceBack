@@ -46,6 +46,7 @@
 [ext_resource type="Texture2D" uid="uid://k8gfq0ew8tdo" path="res://textures/enemy/enemies3.png" id="35_mmag5"]
 [ext_resource type="Texture2D" uid="uid://c01gglru3jfj4" path="res://textures/enemy/enemies4.png" id="36_3i87y"]
 [ext_resource type="Texture2D" uid="uid://bfxv43k31on00" path="res://textures/enemy/enemies5.png" id="37_qbpgg"]
+[ext_resource type="AudioStream" uid="uid://kuigbi4j7rwf" path="res://audio/music/bgm.ogg" id="47_wc02i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i5xja"]
 texture = ExtResource("1_4p6gt")
@@ -409,3 +410,7 @@ offset_top = -40.0
 offset_right = 352.0
 offset_bottom = -17.0
 text = "Just... don't die here."
+
+[node name="BGM" type="AudioStreamPlayer2D" parent="." unique_id=1973850174]
+stream = ExtResource("47_wc02i")
+autoplay = true

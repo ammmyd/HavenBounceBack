@@ -46,6 +46,7 @@
 [ext_resource type="Texture2D" uid="uid://bhejp1l7w0r7c" path="res://textures/level/floor.png" id="40_cvgfi"]
 [ext_resource type="Texture2D" uid="uid://diunapaqd8jsc" path="res://textures/level/ceiling.png" id="41_sb6b3"]
 [ext_resource type="Texture2D" uid="uid://r2xwu7hluvel" path="res://textures/level/wallNew.png" id="42_hl4lf"]
+[ext_resource type="AudioStream" uid="uid://kuigbi4j7rwf" path="res://audio/music/bgm.ogg" id="47_cugil"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i5xja"]
 texture = ExtResource("1_qh630")
@@ -415,3 +416,7 @@ offset_top = -603.0
 offset_right = 1244.0
 offset_bottom = -580.0
 text = "Spike -->"
+
+[node name="BGM" type="AudioStreamPlayer2D" parent="." unique_id=655950655]
+stream = ExtResource("47_cugil")
+autoplay = true
