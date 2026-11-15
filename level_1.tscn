@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://b2veklr3t3qse"]
 
-[ext_resource type="Script" uid="uid://qpdoa3hwlrnb" path="res://scripts/character-Mvmt.gd" id="1_1pe0h"]
+[ext_resource type="Script" uid="uid://qpdoa3hwlrnb" path="res://scripts/character.gd" id="1_1pe0h"]
 [ext_resource type="Texture2D" uid="uid://bcy43ifp12sxs" path="res://textures/slime/dead/GameJam_ (5).png" id="1_5rr72"]
 [ext_resource type="AudioStream" uid="uid://cmtmg0lsehjmg" path="res://audio/slime/Slime_attack1.ogg" id="2_27bay"]
 [ext_resource type="Texture2D" uid="uid://c68ig83re3tqh" path="res://textures/slime/dead/GameJam_ (6).png" id="2_gyffv"]
@@ -12,8 +12,27 @@
 [ext_resource type="Texture2D" uid="uid://bo1376wu7l36x" path="res://textures/slime/eating/eating 5.png" id="7_ubhxj"]
 [ext_resource type="Texture2D" uid="uid://bla0shdocl4lu" path="res://textures/slime/eating/eating6.png" id="8_65or1"]
 [ext_resource type="Texture2D" uid="uid://btwabhprqudw3" path="res://textures/slime/eating/eating 2.png" id="9_lhbbi"]
-[ext_resource type="Texture2D" uid="uid://dfwam3ojrgcc6" path="res://textures/level/wallTemp.png" id="10_gyffv"]
 [ext_resource type="Texture2D" uid="uid://dmmx2l43nfqa" path="res://textures/aimLine.png" id="13_ggavl"]
+[ext_resource type="Texture2D" uid="uid://burrd2udywy03" path="res://textures/slime/idle.png" id="13_hycyb"]
+[ext_resource type="Texture2D" uid="uid://ba3mfruj0qabg" path="res://textures/slime/idle2.png" id="14_swvua"]
+[ext_resource type="Texture2D" uid="uid://p5of3u1pfk0s" path="res://textures/slime/idle3.png" id="15_ka01f"]
+[ext_resource type="Texture2D" uid="uid://slmbchg62tsp" path="res://textures/slime/idle4.png" id="16_notaq"]
+[ext_resource type="Texture2D" uid="uid://da0bouuyfglul" path="res://textures/slime/jump.png" id="17_ett8d"]
+[ext_resource type="Texture2D" uid="uid://bbxnyg015v2ji" path="res://textures/slime/jump2.png" id="18_4p6gt"]
+[ext_resource type="Texture2D" uid="uid://b8adierr30waj" path="res://textures/slime/jump3.png" id="19_td8cy"]
+[ext_resource type="Texture2D" uid="uid://d4jajbl2lqm5t" path="res://textures/slime/jump5.png" id="20_84ct4"]
+[ext_resource type="Texture2D" uid="uid://ciops7t2v8oba" path="res://textures/slime/wall splat 1.png" id="21_i5xja"]
+[ext_resource type="Texture2D" uid="uid://dcu5wktrwv4n2" path="res://textures/slime/wall splat 2.png" id="22_mdra8"]
+[ext_resource type="Texture2D" uid="uid://c5thbm56p801x" path="res://textures/slime/wall splat 3.png" id="23_w0qac"]
+[ext_resource type="Texture2D" uid="uid://br0ln82ttldni" path="res://textures/slime/wall splat 4.png" id="24_qa26o"]
+[ext_resource type="Texture2D" uid="uid://ic0km6tijk7g" path="res://textures/slime/walk.png" id="25_hu5wk"]
+[ext_resource type="Texture2D" uid="uid://bs7d4m18bwht8" path="res://textures/slime/walk2.png" id="26_mmag5"]
+[ext_resource type="Texture2D" uid="uid://b45yb36itbjys" path="res://textures/slime/walk3.png" id="27_3i87y"]
+[ext_resource type="Texture2D" uid="uid://bstq74bsqavb6" path="res://textures/slime/walk4.png" id="28_qbpgg"]
+[ext_resource type="Texture2D" uid="uid://bhejp1l7w0r7c" path="res://textures/level/floor.png" id="30_ka01f"]
+[ext_resource type="Texture2D" uid="uid://kq3ryhl4av0h" path="res://textures/level/spikes.png" id="30_notaq"]
+[ext_resource type="Texture2D" uid="uid://diunapaqd8jsc" path="res://textures/level/ceiling.png" id="31_notaq"]
+[ext_resource type="Texture2D" uid="uid://r2xwu7hluvel" path="res://textures/level/wallNew.png" id="32_ett8d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mvuvj"]
 size = Vector2(45, 33)
@@ -62,31 +81,146 @@ animations = [{
 "name": &"slimeEating",
 "speed": 10.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_hycyb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_swvua")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_ka01f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_notaq")
+}],
 "loop": 1,
 "name": &"slimeIdle",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_ett8d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_4p6gt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_td8cy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_84ct4")
+}],
+"loop": 0,
+"name": &"slimeJump",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_i5xja")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_mdra8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_w0qac")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_qa26o")
+}],
+"loop": 0,
+"name": &"slimeSplat",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("25_hu5wk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_mmag5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_3i87y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_qbpgg")
+}],
 "loop": 1,
-"name": &"slimeStretch",
+"name": &"slimeWalk",
 "speed": 5.0
 }]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1pe0h"]
-texture = ExtResource("10_gyffv")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ett8d"]
+texture = ExtResource("30_notaq")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_hycyb"]
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_ett8d")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4p6gt"]
+resource_name = "Floor"
+texture = ExtResource("30_ka01f")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_td8cy"]
+resource_name = "Ceiling"
+texture = ExtResource("31_notaq")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_84ct4"]
+resource_name = "Wall"
+texture = ExtResource("32_ett8d")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:4/0 = 0
+0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:5/0 = 0
+0:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
 [sub_resource type="TileSet" id="TileSet_mvuvj"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_1pe0h")
+sources/0 = SubResource("TileSetAtlasSource_4p6gt")
+sources/1 = SubResource("TileSetAtlasSource_td8cy")
+sources/2 = SubResource("TileSetAtlasSource_84ct4")
+tile_proxies/coords_level = [[14, Vector2i(0, 0)], [18, Vector2i(0, 0)], [15, Vector2i(0, 0)], [18, Vector2i(1, 0)], [16, Vector2i(0, 0)], [18, Vector2i(2, 0)], [17, Vector2i(0, 0)], [18, Vector2i(3, 0)]]
 
 [node name="Level1" type="Node2D" unique_id=1644244573]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1388568317]
+collision_layer = 255
+collision_mask = 255
 script = ExtResource("1_1pe0h")
 
 [node name="LaunchSound" type="AudioStreamPlayer2D" parent="CharacterBody2D" unique_id=370981892]
@@ -101,10 +235,10 @@ shape = SubResource("RectangleShape2D_mvuvj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=505640158]
 texture_filter = 1
-position = Vector2(-7.0000076, 16.999996)
+position = Vector2(-7, 12.000002)
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_lthvp")
-animation = &"slimeDead"
+animation = &"slimeIdle"
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=1700305279]
 position_smoothing_enabled = true
@@ -115,7 +249,9 @@ texture = ExtResource("13_ggavl")
 texture_mode = 1
 
 [node name="Spike" type="TileMapLayer" parent="." unique_id=335007599]
+tile_map_data = PackedByteArray("AAAKAAAAAQAAAAAAAAAKAAEAAQAAAAEAAAALAAAAAQABAAAAAAALAAEAAQABAAEAAAAMAAAAAQAAAAAAAAAMAAEAAQAAAAEAAAANAAAAAQABAAAAAAANAAEAAQABAAEAAAAOAAAAAQAAAAAAAAAOAAEAAQAAAAEAAAAPAAAAAQABAAAAAAAPAAEAAQABAAEAAAAQAAAAAQAAAAAAAAAQAAEAAQAAAAEAAAARAAAAAQABAAAAAAARAAEAAQABAAEAAAASAAAAAQAAAAAAAAASAAEAAQAAAAEAAAATAAAAAQABAAAAAAATAAEAAQABAAEAAAAUAAAAAQAAAAAAAAAUAAEAAQAAAAEAAAAVAAAAAQABAAAAAAAVAAEAAQABAAEAAAAWAAAAAQAAAAAAAAAWAAEAAQAAAAEAAAAXAAAAAQABAAAAAAAXAAEAAQABAAEAAAAYAAAAAQAAAAAAAAAYAAEAAQAAAAEAAAAZAAAAAQABAAAAAAAZAAEAAQABAAEAAAAaAAAAAQAAAAAAAAAaAAEAAQAAAAEAAAAbAAAAAQABAAAAAAAbAAEAAQABAAEAAAAcAAAAAQAAAAAAAAAcAAEAAQAAAAEAAAAdAAAAAQABAAAAAAAdAAEAAQABAAEAAAAeAAAAAQAAAAAAAAAeAAEAAQAAAAEAAAAfAAAAAQABAAAAAAAfAAEAAQABAAEAAAAgAAAAAQAAAAAAAAAgAAEAAQAAAAEAAAAhAAAAAQABAAAAAAAhAAEAAQABAAEAAAA=")
+tile_set = SubResource("TileSet_hycyb")
 
 [node name="Obstacle" type="TileMapLayer" parent="." unique_id=350361396]
-tile_map_data = PackedByteArray("AAD7/wEAAAAAAAAAAAD8/wEAAAAAAAAAAAD9/wEAAAAAAAAAAAD+/wEAAAAAAAAAAAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAAEAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAFAAAAAAAAAAAAAAAFAP//AAAAAAAAAAAFAP7/AAAAAAAAAAAFAP3/AAAAAAAAAAAFAPz/AAAAAAAAAAAFAPr/AAAAAAAAAAAFAPv/AAAAAAAAAAAFAPn/AAAAAAAAAAD7//n/AAAAAAAAAAD8//n/AAAAAAAAAAD9//n/AAAAAAAAAAD+//n/AAAAAAAAAAD///n/AAAAAAAAAAAAAPj/AAAAAAAAAAABAPj/AAAAAAAAAAABAPn/AAAAAAAAAAACAPn/AAAAAAAAAAAAAPn/AAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAD9/wEAAAAAAAAAAAD+/wEAAAABAAAAAAD//wEAAAACAAAAAAAAAAEAAAADAAAAAAABAAEAAAAAAAAAAAACAAEAAAABAAAAAAADAAEAAAACAAAAAAAEAAEAAAADAAAAAAAFAAEAAAAAAAAAAAAGAAEAAAABAAAAAAAHAAEAAAACAAAAAAAIAAEAAAADAAAAAAAJAAEAAAAAAAAAAAAKAAEAAAABAAAAAAALAAEAAAACAAAAAAAMAAEAAAADAAAAAAANAAEAAAAAAAAAAAAOAAEAAAABAAAAAAAPAAEAAAACAAAAAAAQAAEAAAADAAAAAAARAAEAAAAAAAAAAAASAAEAAAABAAAAAAATAAEAAAACAAAAAAAUAAEAAAADAAAAAAAVAAEAAAAAAAAAAAAWAAEAAAABAAAAAAAXAAEAAAACAAAAAAAYAAEAAAADAAAAAAAZAAEAAAAAAAAAAAAaAAEAAAABAAAAAAAbAAEAAAACAAAAAAAcAAEAAAADAAAAAAAEAPv/AgAAAAEAAAAEAPz/AgAAAAEAAAAEAP3/AgAAAAIAAAAEAP7/AgAAAAMAAAAEAP//AgAAAAQAAAAEAAAAAgAAAAUAAAD8//z/AgAAAAEAAAD8//3/AgAAAAIAAAD8//7/AgAAAAMAAAD8////AgAAAAQAAAD8/wAAAgAAAAUAAAD8//f/AgAAAAQAAAD8//j/AgAAAAUAAAD8//n/AgAAAAMAAAD8//r/AgAAAAQAAAD8//v/AgAAAAUAAAD8//T/AQAAAAAAAAD8//X/AgAAAAIAAAD8//b/AgAAAAMAAAD9//T/AQABAAAAAAD+//T/AQACAAAAAAD///T/AQADAAAAAAAAAPT/AQAAAAAAAAABAPT/AQABAAAAAAACAPT/AQACAAAAAAADAPT/AQADAAAAAAAEAPT/AQAAAAAAAAAFAPT/AQABAAAAAAAGAPT/AQACAAAAAAAHAPT/AQADAAAAAAAIAPT/AQAAAAAAAAAJAPT/AQABAAAAAAAKAPT/AQACAAAAAAALAPT/AQADAAAAAAAMAPT/AQAAAAAAAAANAPT/AQABAAAAAAAOAPT/AQACAAAAAAAPAPT/AQADAAAAAAAQAPT/AQAAAAAAAAARAPT/AQABAAAAAAASAPT/AQACAAAAAAATAPT/AQADAAAAAAD9//z/AQAAAAAAAAD+//z/AQABAAAAAAD///z/AQACAAAAAAAAAPz/AQADAAAAAAAEAPr/AgAAAAAAAAD8/wEAAAABAAAAAAARAPr/AgAAAAAAAAARAPv/AgAAAAEAAAARAPz/AgAAAAIAAAARAP3/AgAAAAMAAAARAP7/AgAAAAQAAAARAP//AgAAAAUAAAARAAAAAgAAAAUAAAAOAPr/AAADAAAAAAANAPr/AAACAAAAAAAHAPr/AAABAAAAAAAIAPr/AAACAAAAAAA=")
 tile_set = SubResource("TileSet_mvuvj")
